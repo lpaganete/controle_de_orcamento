@@ -1,0 +1,111 @@
+<div class="item">
+                <div>
+                    <input 
+                        type="url" 
+                        name="avatar_url" 
+                        placeholder="http://"
+                        value="{{ member.avatar_url}}" 
+                    >  <!-- O  value permite trazer o valor do banco para o input-->
+                </div>
+            </div>
+
+            <div class="item">
+                <div>Nome</div>
+                <div>
+                    <input 
+                        type="text" 
+                        name="name"
+                        value="{{ member.name}}"
+                    >
+                </div>
+            </div>
+
+            <div class="item">
+                <div>Email</div>
+                <div>
+                    <input 
+                        type="email" 
+                        name="email"
+                        value="{{ member.email}}"
+                    >
+                </div>
+            </div>
+
+            <div class="item">
+                <div>Data de nascimento</div>
+                <input 
+                    type="date"  
+                    name="birth"
+                    value="{{ member.birth}}" 
+                >
+            </div>
+
+            <div class="item">
+                <div>Sexo</div>
+                <div>
+                    <span>
+                        <input 
+                            type="radio" 
+                            name="gender" 
+                            value="M" 
+                            {% if  member.gender == 'M'%} 
+                                checked
+                            {% endif %}> Masculino 
+                    </span>
+                     <span>
+                        <input 
+                            type="radio" 
+                            name="gender" 
+                            value="F" 
+                            {% if  member.gender == 'F'%}
+                                checked
+                            {% endif %}> Feminino 
+                    </span> <!-- Este if é para retornar o valor que está salvo no banco e deixar como checked -->
+                </div>
+            </div>
+
+            <div class="item">
+                <div>Tipo Sanguineo</div>
+                <div>
+                    <select name="blood">
+                        <option value="A1" {% if member.blood == "A1"%}selected{%endif%}>
+                            A+
+                        </option>
+                        <option value="A0" {% if member.blood == "A0"%}selected{%endif%}>
+                            A-
+                        </option>
+                        <option value="AB1" {% if member.blood == "AB1"%}selected{%endif%}>
+                            AB+
+                        </option>
+                        <option value="AB0" {% if member.blood == "AB0"%}selected{%endif%}>
+                            AB-
+                        </option>
+                        <option value="O1" {% if member.blood == "O1"%}selected{%endif%}>
+                            O+
+                        </option>
+                        <option value="O0" {% if member.blood == "A1"%}selected{%endif%}>
+                            O-
+                        </option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="item">
+                <div>Peso (kg)</div>
+                <input 
+                    type="number"  
+                    name="weight"
+                    value="{{ member.weight}}" 
+                >
+            </div> 
+
+            <div class="item">
+                <div>Altura (cm)</div>
+                <input 
+                    type="number"  
+                    name="height"
+                    value="{{ member.height}}" 
+                >
+            </div> 
+        
+            <button type="submit">Salvar</button> 

@@ -1,0 +1,91 @@
+{
+  "members": [
+    {
+      "id": 1,
+      "avatar_url": "http://google.com",
+      "name": "Tião",
+      "birth": 1178150400000,
+      "gender": "M",
+      "services": "acadeimia",
+      "created_at": 1590005529438
+    },
+    {
+      "id": 5,
+      "avatar_url": "http://google.com",
+      "birth": 878428800000,
+      "name": "luisssss",
+      "email": "teste@gmail.com",
+      "blood": "AB1",
+      "weight": "99",
+      "height": "180",
+      "gender": "F"
+    },
+    {
+      "id": 6,
+      "avatar_url": "https://i.ytimg.com/vi/NFRRg2E-wqI/maxresdefault.jpg",
+      "birth": 812937600000,
+      "name": "Justina",
+      "email": "justina@gmail.com",
+      "blood": "AB1",
+      "weight": "55",
+      "height": "160",
+      "gender": "F"
+    }
+  ],
+  "instructors": [
+    {
+      "id": 1,
+      "avatar_url": "http://google.com",
+      "name": "Luis",
+      "birth": 814665600000,
+      "gender": "M",
+      "services": "crossfit, musculação",
+      "created_at": 1587655233253
+    },
+    {
+      "id": 3,
+      "avatar_url": "http://google.com",
+      "name": "Sebastina",
+      "birth": 1503792000000,
+      "gender": "F",
+      "services": "crossfit",
+      "created_at": 1587665676360
+    },
+    {
+      "id": 4,
+      "avatar_url": "http://google2.com",
+      "name": "Tioa",
+      "birth": 930355200000,
+      "gender": "F",
+      "services": " luta, dança",
+      "created_at": 1587665676360
+    },
+    {
+      "id": 5,
+      "avatar_url": "https://upload.wikimedia.org/wikipedia/pt/f/f1/Scrooge_McDuck.jpg",
+      "name": "Pato",
+      "birth": 704419200000,
+      "gender": "M",
+      "services": "crossfit",
+      "created_at": 1587669062583
+    },
+    {
+      "id": 6,
+      "avatar_url": "https://studiosol-a.akamaihd.net/uploadfile/letras/fotos/3/3/0/4/330491c4b4ea2a2588bb7f63286e7bcb.jpg",
+      "name": "Tião Carreiro",
+      "birth": 468115200000,
+      "gender": "M",
+      "services": "crossfit, dança",
+      "created_at": 1587672379986
+    },
+    {
+      "id": 6,
+      "avatar_url": "http://google.com",
+      "name": "ze",
+      "birth": 1543536000000,
+      "gender": "M",
+      "services": "crossfit",
+      "created_at": 1590019453629
+    }
+  ]
+}

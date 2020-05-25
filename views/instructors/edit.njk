@@ -1,0 +1,37 @@
+
+{% extends "layout.njk" %}
+
+
+{% block content %}
+
+    <div class="card">
+
+        <section class="avatar" 
+            style="background: url({{ instructor.avatar_url }}) no-repeat center center / cover">
+        </section>
+        
+        <section class="details">
+            <!-- Sobrescrevendo o método POST pelo metodo PUT-->
+            <form method="POST" action="/instructors?_method=PUT"> 
+                
+                <h3>Editar Instrutor</h3>
+
+                {% include 'instructors/fields.njk' %} <!--Vai incluir um pedaço de código que está no arquvo fields.njk-->
+
+                <input type="hidden" name="id" value="{{ instructor.id}}"> <!-- Input "hidden" que não parece. Está pegando o id desse instrutor-->
+            
+            </form>
+
+            <!-- Criando from para excluir -->
+            <form id="form-delete" action="/instructors?_method=DELETE" method="post">
+
+                <input type="hidden" name="id" value={{instructor.id}}> 
+                <button type="submit">Deletar</button>
+
+            </form>
+        
+        </section>
+        
+    </div>
+
+{% endblock %}     
