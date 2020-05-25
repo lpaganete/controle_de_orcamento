@@ -4,11 +4,11 @@ const data = require("../data.json") //pegando o arquivo data.json
 const { age, date } = require('../utils') //importando o objeto age que trata as datas
 
 exports.index = function(req, res) {
-    return res.render("instructors/index", { instructors: data.instructors })
+    return res.render("orcamentos/index", { orcamentos: data.orcamentos })
 }
 
 exports.create = function(req, res) {
-    return res.render("instructors/create")
+    return res.render("orcamentos/create")
 }
 
 // *** CREATE ****/
@@ -31,12 +31,12 @@ exports.post = function (req, res) {
     //=== TRATAMENTO DOS DADOS ===//
     birth = Date.parse(req.body.birth) //Mudando o formato da hr para milisegundos e trazendo para o data.json
     const created_at = Date.now() //trazendo a data da hr de criação do cadastro do instrutorpois (não existe no front)
-    const id = Number(data.instructors.length + 1) //criando id para cada objeto. (não existe no front)
+    const id = Number(data.orcamentos.length + 1) //criando id para cada objeto. (não existe no front)
 
 
     //=== ENVIANDO DADOS PARA DENTRO DO DATA ===//
     //A cada vez que eu salvar ele irá armazenar os objetos dentro do data.json dentro de um array de objetos
-    data.instructors.push({//usando o objeto JSON como um objeto JS
+    data.orcamentos.push({//usando o objeto JSON como um objeto JS
         
         id,
         avatar_url,
@@ -52,7 +52,7 @@ exports.post = function (req, res) {
     fs.writeFile("data.json", JSON.stringify(data, null, 2), function (err) { //Formatando arquivo data.json
         if (err) return res.send("Write file error!")
 
-        return res.redirect("/instructors") //Depois de tudo salvo dentro do data.json, ele retorna para página instructors
+        return res.redirect("/orcamentos") //Depois de tudo salvo dentro do data.json, ele retorna para página orcamentos
     }) 
     
 }
@@ -65,26 +65,26 @@ exports.show = function (req, res) {
 
     const {id} = req.params //retirando o id e fazendo com que ele seja uma variável
 
-    const foundInstructor = data.instructors.find(function(instructor) {
-        return instructor.id == id
+    const foundOrcamento = data.orcamentos.find(function(orcamento) {
+        return orcamento.id == id
     }) 
 
-    if (!foundInstructor) { //se nao tiver o id que foi solicitado 
-        return res.send("Instructor not found!")
+    if (!foundOrcamento) { //se nao tiver o id que foi solicitado 
+        return res.send("Orcamento not found!")
     }
 
            
 
     //=== Tratando dados para mandar para o front ===//
-    const instructor = {
-        ...foundInstructor,
-        age: age(foundInstructor.birth),
+    const orcamento = {
+        ...foundOrcamento,
+        age: age(foundOrcamento.birth),
         //split transforma a string em array
-        services: foundInstructor.services.split(","),  
-        created_at: new Intl.DateTimeFormat("pt-br").format(foundInstructor.created_at), //formatando a data para formato do Brasil
+        services: foundOrcamento.services.split(","),  
+        created_at: new Intl.DateTimeFormat("pt-br").format(foundOrcamento.created_at), //formatando a data para formato do Brasil
     }
 
-    return res.render("instructors/show", {instructor: instructor})
+    return res.render("orcamentos/show", {orcamento: orcamento})
     
 
 
@@ -97,25 +97,25 @@ exports.edit = function(req,res) {
     //reaproveitando estre trecho do show
     const {id} = req.params 
 
-    const foundInstructor = data.instructors.find(function(instructor) {
-        return instructor.id == id
+    const foundOrcamento = data.orcamentos.find(function(orcamento) {
+        return orcamento.id == id
     }) 
 
-    if (!foundInstructor) { //se nao tiver o id que foi solicitado 
-        return res.send("Instructor not found!")
+    if (!foundOrcamento) { //se nao tiver o id que foi solicitado 
+        return res.send("Orcamento not found!")
     }
 
     //
-    // instructor.birth = 814665600000
-    // date(instructor.birth)
+    // orcamento.birth = 814665600000
+    // date(orcamento.birth)
     // return yyy-mm-dd
 
-    const instructor = {
-        ...foundInstructor,
-        birth: date(foundInstructor.birth).iso 
+    const orcamento = {
+        ...foundOrcamento,
+        birth: date(foundOrcamento.birth).iso 
     }
      
-    return res.render("instructors/edit", {instructor})
+    return res.render("orcamentos/edit", {orcamento})
 }
 
 //*** PUT (salvar oq foi editado no back-end) ****/
@@ -125,18 +125,18 @@ exports.put = function(req, res) {
     let index = 0
 
     //verificando se o instrutor foi cadastrado
-    const foundInstructor = data.instructors.find(function(instructor, foundIndex ) {
-        if (id == instructor.id){ //adicionando um index ao objeto
+    const foundOrcamento = data.orcamentos.find(function(orcamento, foundIndex ) {
+        if (id == orcamento.id){ //adicionando um index ao objeto
             index = foundIndex
             return true
         }
     }) 
     //se o instrutor não foi cadastrado, ele retorn uma mensagems
-    if (!foundInstructor)   return res.send("Instructor not found!")
+    if (!foundOrcamento)   return res.send("Orcamento not found!")
     
     //espalhando dentro do objeto todos os dados que estão no data e todos os dados que estão no req.body (front-end)
-    const instructor = {
-        ...foundInstructor,
+    const orcamento = {
+        ...foundOrcamento,
         ...req.body,
         birth: Date.parse(req.body.birth),
         id: Number(req.body.id)
@@ -144,12 +144,12 @@ exports.put = function(req, res) {
 
     //agora meus  dados estão ok para serem colocados dentro do objjeto de data.js
 
-    data.instructors[index] = instructor //adicionando no data somente o instructor que eu alterei
+    data.orcamentos[index] = orcamento //adicionando no data somente o orcamento que eu alterei
 
     fs.writeFile("data.json", JSON.stringify(data, null, 2), function(err) {
         if(err) return res.send("Write error!")
 
-        return res.redirect(`/instructors/${id}`) //quando salvar o arquivo ele redireciona para a pagina do instrutor que foi alterado
+        return res.redirect(`/orcamentos/${id}`) //quando salvar o arquivo ele redireciona para a pagina do instrutor que foi alterado
     })
 }
 
@@ -157,15 +157,15 @@ exports.put = function(req, res) {
 exports.delete = function(req, res) {
     const {id} = req.body //pegando o id de dentro do body
     
-    const filteredInstructors  = data.instructors.filter(function(instructor) { 
-        //filter funciona como uma estrutura de repetição. Para cada instrutor, ele vai rodar a function e vai enviar para dentro o instructor. tudo que a função retornar true, ela vai colocar dentro do novo array filteredInstructors. tudo que for falso ele retira de dentro do novo array.
-        return instructor.id != id  //se o id for diferente do que o que esta desmembrado, ele vai colocar dentro do novo array (true)
+    const filteredOrcamentos  = data.orcamentos.filter(function(orcamento) { 
+        //filter funciona como uma estrutura de repetição. Para cada instrutor, ele vai rodar a function e vai enviar para dentro o orcamento. tudo que a função retornar true, ela vai colocar dentro do novo array filteredOrcamentos. tudo que for falso ele retira de dentro do novo array.
+        return orcamento.id != id  //se o id for diferente do que o que esta desmembrado, ele vai colocar dentro do novo array (true)
     })
 
-    data.instructors = filteredInstructors //recebendo os dados atualizados do novo array
+    data.orcamentos = filteredOrcamentos //recebendo os dados atualizados do novo array
     
     fs.writeFile("data.json", JSON.stringify(data, null, 2 ), function(err) {
         if (err) return res.send("Write file error!")
-        return res.redirect("/instructors")
+        return res.redirect("/orcamentos")
     })
 }

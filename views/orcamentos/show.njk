@@ -5,7 +5,7 @@
 
     <div class="card">
         <section class="avatar" 
-                 style="background: url({{ instructor.avatar_url }}) no-repeat center center / cover">
+                 style="background: url({{ orcamento.avatar_url }}) no-repeat center center / cover">
                  
         </section>
 
@@ -14,23 +14,23 @@
 
             <div class="item">
                 <div>Instrutor</div>
-                <div>{{ instructor.name }}</div>
+                <div>{{ orcamento.name }}</div>
             </div>
 
             <div class="item">
                 <div>Idade</div>
-                <div>{{ instructor.age }}</div>
+                <div>{{ orcamento.age }}</div>
             </div>
 
             <div class="item">
                 <div>Sexo</div>
-                <div>{{ "Masculino" if instructor.gender == "M" else "Feminino" }}</div>
+                <div>{{ "Masculino" if orcamento.gender == "M" else "Feminino" }}</div>
             </div>
 
             <div class="item">
                 <div>Acompanhamento</div>
                 <div>
-                    {% for service in instructor.services %}
+                    {% for service in orcamento.services %}
                     <span>{{ service }}</span>
                     {%  endfor %}
                 </div>
@@ -38,10 +38,10 @@
 
             <div class="item">
                 <div>Desde</div>
-                <div>{{ instructor.created_at }}</div>
+                <div>{{ orcamento.created_at }}</div>
             </div>
 
-            <a href="/instructors/{{ instructor.id }}/edit" class="button">Editar</a>
+            <a href="/orcamentos/{{ orcamento.id }}/edit" class="button">Editar</a>
 
         </section>
     </div>

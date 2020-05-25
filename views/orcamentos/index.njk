@@ -4,7 +4,7 @@
 {% block content %}
 
     <div class="card table-container">
-    <a href="/instructors/create/">novo</a>
+    <a href="/orcamentos/create/">novo</a>
          <table>
             <thead> 
                 <tr>
@@ -14,14 +14,14 @@
                 </tr>
             </thead>
             <tbody>
-                {% for instructor in instructors %}
+                {% for orcamento in orcamentos %}
                 <tr>
                     <td>
-                        <span style="background-image: url({{ instructor.avatar_url }})"></span>
-                        {{instructor.name}}
+                        <span style="background-image: url({{ orcamento.avatar_url }})"></span>
+                        {{orcamento.name}}
                     </td>
-                    <td>{{instructor.services}}</td>
-                    <td> <a href="/instructors/{{ instructor.id }}">ver</a> </td>
+                    <td>{{orcamento.services}}</td>
+                    <td> <a href="/orcamentos/{{ orcamento.id }}">ver</a> </td>
                 </tr>
                 {% endfor %}
             </tbody>

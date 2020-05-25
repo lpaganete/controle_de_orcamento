@@ -1,32 +1,32 @@
 const express = require('express')
 const routes = express.Router()
-const  instructors =  require('./controllers/instructors')
+const  orcamentos =  require('./controllers/orcamentos')
 
 routes.get('/', function(req, res) {
-    return res.redirect("/instructors")
+    return res.redirect("/orcamentos")
 })
 
 module.exports = routes 
 
 //== INSTRUCTORS ==
 
-routes.get('/instructors', instructors.index)
+routes.get('/orcamentos', orcamentos.index)
 
-//Rota para CRIAR instrutor
-routes.get('/instructors/create', instructors.create)
+//Rota para CRIAR novo orçamento
+routes.get('/orcamentos/create', orcamentos.create)
 
 //Criando rota para LISTAR (show)
-routes.get('/instructors/:id', instructors.show)
+routes.get('/orcamentos/:id', orcamentos.show)
 
 //Rota para EDITAR instrutor
-routes.get('/instructors/:id/edit', instructors.edit)
+routes.get('/orcamentos/:id/edit', orcamentos.edit)
 
 //Configurando rota para trazer os dados do formulário para o backend
-routes.post("/instructors", instructors.post) 
+routes.post("/orcamentos", orcamentos.post) 
 
-routes.put("/instructors", instructors.put )
+routes.put("/orcamentos", orcamentos.put )
 
 //deletar
-routes.delete("/instructors", instructors.delete)
+routes.delete("/orcamentos", orcamentos.delete)
 
 

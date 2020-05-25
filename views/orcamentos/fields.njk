@@ -4,7 +4,7 @@
                         type="url" 
                         name="avatar_url" 
                         placeholder="http://"
-                        value="{{ instructor.avatar_url}}" 
+                        value="{{ orcamento.avatar_url }}" 
                     >  <!-- O  value permite trazer o valor do banco para o input-->
                 </div>
             </div>
@@ -16,7 +16,7 @@
                         type="text" 
                         name="name"
                         placeholder="Nome do instrutor"
-                        value="{{ instructor.name}}"
+                        value="{{ orcamento.name}}"
                     >
                 </div>
             </div>
@@ -26,7 +26,7 @@
                 <input 
                     type="date"  
                     name="birth"
-                    value="{{ instructor.birth}}"
+                    value="{{ orcamento.birth}}"
                 >
             </div>
 
@@ -38,7 +38,7 @@
                             type="radio" 
                             name="gender" 
                             value="M" 
-                            {% if  instructor.gender == 'M'%} 
+                            {% if  orcamento.gender == 'M'%} 
                                 checked
                             {% endif %}> Masculino 
                     </span>
@@ -47,7 +47,7 @@
                             type="radio" 
                             name="gender" 
                             value="F" 
-                            {% if  instructor.gender == 'F'%}
+                            {% if  orcamento.gender == 'F'%}
                                 checked
                             {% endif %}> Feminino 
                     </span> <!-- Este if é para retornar o valor que está salvo no banco e deixar como checked -->
@@ -61,7 +61,7 @@
                         type="text" 
                         name="services"
                         placeholder="Separe os serviços prestados por vírgula"
-                        value="{{ instructor.services }}" 
+                        value="{{ orcamento.services }}" 
                     >
                 </div>
             </div>
