@@ -10,36 +10,53 @@
         </section>
 
         <section class="details">
-            <h3>Detalhes</h3>
+            <h3>Orçamento de: {{ orcamento.month }}</h3>
 
             <div class="item">
-                <div>Instrutor</div>
-                <div>{{ orcamento.name }}</div>
+                <div>Universidade (R$)</div>
+                <div>{{ orcamento.university }}</div>
             </div>
 
             <div class="item">
-                <div>Idade</div>
-                <div>{{ orcamento.age }}</div>
+                <div>Alimentação (R$)</div>
+                <div>{{ orcamento.food }}</div>
             </div>
 
             <div class="item">
-                <div>Sexo</div>
-                <div>{{ "Masculino" if orcamento.gender == "M" else "Feminino" }}</div>
+                <div>Telefone/Internet (R$)</div>
+                <div>{{ orcamento.telephone }}</div>
             </div>
 
             <div class="item">
-                <div>Acompanhamento</div>
-                <div>
-                    {% for service in orcamento.services %}
-                    <span>{{ service }}</span>
-                    {%  endfor %}
-                </div>
+                <div>Educa Mais Brasil (R$)</div>
+                <div>{{ orcamento.educabr }}</div>
             </div>
 
             <div class="item">
-                <div>Desde</div>
+                <div>Cartão de Crédito (R$)</div>
+                <div>{{ orcamento.creditcard }}</div>
+            </div>
+
+            <div class="item">
+               <div>Gastos eventuais (R$)</div>
+                <div>{{ orcamento.any }}</div>
+            </div>
+
+            <div class="item">
+               <div>Economia mensal (R$)</div>
+                <div>{{ orcamento.economy }}</div>
+            </div>
+
+            <div class="item">
+                <div>Criado em</div>
                 <div>{{ orcamento.created_at }}</div>
             </div>
+
+            <div class="item">
+               <div>Total dos Gastos (R$)</div>
+                <div>{{ orcamento.somaGastos }}</div>
+            </div>
+            
 
             <a href="/orcamentos/{{ orcamento.id }}/edit" class="button">Editar</a>
 

@@ -1,7 +1,7 @@
 
 const fs = require('fs') //importando a funcionalidade  fs
 const data = require("../data.json") //pegando o arquivo data.json 
-const { age, date } = require('../utils') //importando o objeto age que trata as datas
+const { age, date, somaGastos } = require('../utils') //importando o objeto age que trata as datas
 
 exports.index = function(req, res) {
     return res.render("orcamentos/index", { orcamentos: data.orcamentos })
@@ -25,7 +25,16 @@ exports.post = function (req, res) {
     }
 
     //desestruturando o req.body. O req.bory são os campos que vieram do form no front-end
-    let{ avatar_url, birth, name, services, gender} = req.body //usei a variavel let pois ela pode mudar
+    let{
+        month,
+        university,
+        food,
+        telephone,
+        educabr,
+        creditcard,
+        any,
+        economy,
+    } = req.body //usei a variavel let pois ela pode mudar
 
 
     //=== TRATAMENTO DOS DADOS ===//
@@ -33,19 +42,26 @@ exports.post = function (req, res) {
     const created_at = Date.now() //trazendo a data da hr de criação do cadastro do instrutorpois (não existe no front)
     const id = Number(data.orcamentos.length + 1) //criando id para cada objeto. (não existe no front)
 
+    //calculando liquidez
+    
+
 
     //=== ENVIANDO DADOS PARA DENTRO DO DATA ===//
     //A cada vez que eu salvar ele irá armazenar os objetos dentro do data.json dentro de um array de objetos
     data.orcamentos.push({//usando o objeto JSON como um objeto JS
         
         id,
-        avatar_url,
-        name,
-        birth,
-        gender, 
-        services,
-        created_at,
-        
+        month,
+        university,
+        food,
+        telephone,
+        educabr,
+        creditcard,
+        any,
+        economy,
+        somaGastos: somaGastos,
+        created_at
+               
     }) 
 
     //Depois de verificar se os campos estão preenchidos ele irá salvar os dados em um arquivo json
@@ -78,9 +94,9 @@ exports.show = function (req, res) {
     //=== Tratando dados para mandar para o front ===//
     const orcamento = {
         ...foundOrcamento,
-        age: age(foundOrcamento.birth),
+        //age: age(foundOrcamento.birth),
         //split transforma a string em array
-        services: foundOrcamento.services.split(","),  
+        //services: foundOrcamento.services.split(","),  
         created_at: new Intl.DateTimeFormat("pt-br").format(foundOrcamento.created_at), //formatando a data para formato do Brasil
     }
 
@@ -112,7 +128,18 @@ exports.edit = function(req,res) {
 
     const orcamento = {
         ...foundOrcamento,
-        birth: date(foundOrcamento.birth).iso 
+        id,
+        month,
+        university,
+        food,
+        telephone,
+        educabr,
+        creditcard,
+        any,
+        economy,
+        somaGastos: somaGastos,
+        created_at
+        //birth: date(foundOrcamento.birth).iso 
     }
      
     return res.render("orcamentos/edit", {orcamento})

@@ -42,25 +42,7 @@ module.exports = {
 
     },
 
-    blood: function(blood) {
-        if (blood == A1){
-            blood = 'A+'
-        }
-        else if (blood == A0){
-            blood = "A-"
-        }
-        else if (blood == AB1){
-            blood = "AB+"
-        }
-        else if (blood == AB0){
-            blood = "AB-"
-        }
-        else if (blood == O1){
-            blood = "O+-"
-        }
-        else if (blood == O0){
-            blood = "O-"
-        }
-        return blood
+    somaGastos: function(somaGastos) {
+        somaGastos = parseInt(university) + parseInt(food) + parseInt(telephone) + parseInt(educabr) + parseInt(creditcard) + parseInt(any) + parseInt(economy)
     }
 }

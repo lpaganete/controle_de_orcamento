@@ -2,7 +2,8 @@
 
 
 :root {
-    --primary-color: #7159c1;
+    --primary-color: #53524d;
+    --cinza-teste: #2d2c2b;
     --secundary-color: #f7df1e;
 }
 
@@ -105,6 +106,7 @@ header {
 
  .details {
      padding: 32px;
+     
  }
 
  .details .item {
