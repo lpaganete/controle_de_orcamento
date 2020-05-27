@@ -1,7 +1,7 @@
 
 const fs = require('fs') //importando a funcionalidade  fs
 const data = require("../data.json") //pegando o arquivo data.json 
-const {somaGastos} = require('../utils') //importando o objeto age que trata as datas
+const {somaDespesas} = require('../utils') //importando o objeto age que trata as datas
 
 exports.index = function(req, res) {
     return res.render("orcamentos/index", { orcamentos: data.orcamentos })
@@ -26,6 +26,9 @@ exports.post = function (req, res) {
 
     //desestruturando o req.body. O req.bory são os campos que vieram do form no front-end
     let{
+        salario,
+        valeAlimentacao,
+        rendaExtra,
         month,
         university,
         food,
@@ -42,25 +45,24 @@ exports.post = function (req, res) {
     const created_at = Date.now() //trazendo a data da hr de criação do cadastro (não existe no front)
     const id = Number(data.orcamentos.length + 1) //criando id para cada objeto. (não existe no front)  
 
-    //calculando despesas
+    //=== CALCULOS ===
 
-    const salario = 1300
-    const valeAlimentacao = 700
-    const rendaExtra = 0
+    const rendaTotal = parseFloat(salario) + parseFloat(valeAlimentacao) + parseFloat(rendaExtra)
 
-    const rendaTotal = salario + valeAlimentacao + rendaExtra
-
-    const somaDespesas = parseFloat(university) + parseFloat(food) + parseFloat(telephone) + parseFloat(educabr) + parseFloat(creditcard) + parseFloat(any) + parseFloat(economy)
+   const somaDespesas = parseFloat(university) + parseFloat(food) + parseFloat(telephone) + parseFloat(educabr) + parseFloat(creditcard) + parseFloat(any) + parseFloat(economy)
 
     const saldo = rendaTotal - somaDespesas
 
-
+   
     //=== ENVIANDO DADOS PARA DENTRO DO DATA ===//
   
     data.orcamentos.push({
         
         id,
         month,
+        salario,
+        valeAlimentacao,
+        rendaExtra,
         university,
         food,
         telephone,
@@ -68,9 +70,6 @@ exports.post = function (req, res) {
         creditcard,
         any,
         economy,
-        salario,
-        valeAlimentacao,
-        rendaExtra,
         rendaTotal,
         somaDespesas,
         saldo,
@@ -108,10 +107,7 @@ exports.show = function (req, res) {
     //=== Tratando dados para mandar para o front ===//
     const orcamento = {
         ...foundOrcamento,
-        //age: age(foundOrcamento.birth),
-        //split transforma a string em array
-        //services: foundOrcamento.services.split(","),  
-        created_at: new Intl.DateTimeFormat("pt-br").format(foundOrcamento.created_at), //formatando a data para formato do Brasil
+        created_at: new Intl.DateTimeFormat("pt-br").format(foundOrcamento.created_at), 
         
     }
 
@@ -163,6 +159,9 @@ exports.put = function(req, res) {
     //espalhando dentro do objeto todos os dados que estão no data e todos os dados que estão no req.body (front-end)
 
     let{
+        salario,
+        valeAlimentacao,
+        rendaExtra,
         month,
         university,
         food,
@@ -172,12 +171,8 @@ exports.put = function(req, res) {
         any,
         economy,
     } = req.body //usei a variavel let pois ela pode mudar
-    
-    const salario = 1300
-    const valeAlimentacao = 700
-    const rendaExtra = 0
-
-    const rendaTotal = salario + valeAlimentacao + rendaExtra
+        
+    const rendaTotal = parseFloat(salario) + parseFloat(valeAlimentacao) + parseFloat(rendaExtra)
 
     const somaDespesas = parseFloat(university) + parseFloat(food) + parseFloat(telephone) + parseFloat(educabr) + parseFloat(creditcard) + parseFloat(any) + parseFloat(economy)
 
@@ -186,6 +181,9 @@ exports.put = function(req, res) {
     const orcamento = {
         ...foundOrcamento,
         ...req.body,
+        salario,
+        valeAlimentacao,
+        rendaExtra,
         month,
         university,
         food,

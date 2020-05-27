@@ -6,10 +6,14 @@
 
     <div class="card">
 
-        <section class="avatar" 
-            style="background: url({{ orcamento.avatar_url }}) no-repeat center center / cover">
+        <section class="details"> 
+            <form method="POST" action="/orcamentos?_method=PUT"> 
+                <h3>Renda Mensal</h3>
+
+                {% include 'orcamentos/income.njk' %}
+            </form>
         </section>
-        
+
         <section class="details">
             <!-- Sobrescrevendo o método POST pelo metodo PUT-->
             <form method="POST" action="/orcamentos?_method=PUT"> 

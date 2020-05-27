@@ -43,9 +43,10 @@ module.exports = {
     },
 
 
-    somaGastos: function(somaGastos) {
-        return somaGastos = parseFloat(university) + parseFloat(food) + parseFloat(telephone) + parseFloat(educabr) + parseFloat(creditcard) + parseFloat(any) + parseFloat(economy)
-    }
+    somaGastos: function(somaDespesas) {
+         somaDespesas = parseFloat(university) + parseFloat(food) + parseFloat(telephone) + parseFloat(educabr) + parseFloat(creditcard) + parseFloat(any) + parseFloat(economy)
 
+         return somaDespesas
+    }
 
 }

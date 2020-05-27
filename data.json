@@ -39,6 +39,25 @@
     {
       "id": 4,
       "month": "junho",
+      "university": "200",
+      "food": "100",
+      "telephone": "100",
+      "educabr": "100",
+      "creditcard": "100",
+      "any": "100",
+      "economy": "100",
+      "rendaTotal": null,
+      "somaDespesas": 800,
+      "saldo": null,
+      "created_at": 1590586465271,
+      "birth": null
+    },
+    {
+      "id": 4,
+      "month": "julho",
+      "salario": "1300",
+      "valeAlimentacao": "700",
+      "rendaExtra": "0",
       "university": "100",
       "food": "100",
       "telephone": "100",
@@ -46,14 +65,28 @@
       "creditcard": "100",
       "any": "100",
       "economy": "100",
-      "salario": 1300,
-      "valeAlimentacao": 700,
-      "rendaExtra": 0,
       "rendaTotal": 2000,
       "somaDespesas": 700,
       "saldo": 1300,
-      "created_at": 1590586465271,
-      "birth": null
+      "created_at": 1590594276600
+    },
+    {
+      "id": 5,
+      "month": "janeiro",
+      "salario": "1300",
+      "valeAlimentacao": "700",
+      "rendaExtra": "100",
+      "university": "300",
+      "food": "300",
+      "telephone": "300",
+      "educabr": "300",
+      "creditcard": "300",
+      "any": "300",
+      "economy": "300",
+      "rendaTotal": 2100,
+      "somaDespesas": 2100,
+      "saldo": 0,
+      "created_at": 1590595395193
     }
   ]
 }
