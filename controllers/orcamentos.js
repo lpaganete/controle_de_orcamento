@@ -1,7 +1,7 @@
 
 const fs = require('fs') //importando a funcionalidade  fs
 const data = require("../data.json") //pegando o arquivo data.json 
-const { age, date, somaGastos } = require('../utils') //importando o objeto age que trata as datas
+const {somaGastos} = require('../utils') //importando o objeto age que trata as datas
 
 exports.index = function(req, res) {
     return res.render("orcamentos/index", { orcamentos: data.orcamentos })
@@ -39,16 +39,25 @@ exports.post = function (req, res) {
 
     //=== TRATAMENTO DOS DADOS ===//
     birth = Date.parse(req.body.birth) //Mudando o formato da hr para milisegundos e trazendo para o data.json
-    const created_at = Date.now() //trazendo a data da hr de criação do cadastro do instrutorpois (não existe no front)
-    const id = Number(data.orcamentos.length + 1) //criando id para cada objeto. (não existe no front)
+    const created_at = Date.now() //trazendo a data da hr de criação do cadastro (não existe no front)
+    const id = Number(data.orcamentos.length + 1) //criando id para cada objeto. (não existe no front)  
 
-    //calculando liquidez
-    
+    //calculando despesas
+
+    const salario = 1300
+    const valeAlimentacao = 700
+    const rendaExtra = 0
+
+    const rendaTotal = salario + valeAlimentacao + rendaExtra
+
+    const somaDespesas = parseFloat(university) + parseFloat(food) + parseFloat(telephone) + parseFloat(educabr) + parseFloat(creditcard) + parseFloat(any) + parseFloat(economy)
+
+    const saldo = rendaTotal - somaDespesas
 
 
     //=== ENVIANDO DADOS PARA DENTRO DO DATA ===//
-    //A cada vez que eu salvar ele irá armazenar os objetos dentro do data.json dentro de um array de objetos
-    data.orcamentos.push({//usando o objeto JSON como um objeto JS
+  
+    data.orcamentos.push({
         
         id,
         month,
@@ -59,8 +68,13 @@ exports.post = function (req, res) {
         creditcard,
         any,
         economy,
-        somaGastos: somaGastos,
-        created_at
+        salario,
+        valeAlimentacao,
+        rendaExtra,
+        rendaTotal,
+        somaDespesas,
+        saldo,
+        created_at,
                
     }) 
 
@@ -98,6 +112,7 @@ exports.show = function (req, res) {
         //split transforma a string em array
         //services: foundOrcamento.services.split(","),  
         created_at: new Intl.DateTimeFormat("pt-br").format(foundOrcamento.created_at), //formatando a data para formato do Brasil
+        
     }
 
     return res.render("orcamentos/show", {orcamento: orcamento})
@@ -121,25 +136,9 @@ exports.edit = function(req,res) {
         return res.send("Orcamento not found!")
     }
 
-    //
-    // orcamento.birth = 814665600000
-    // date(orcamento.birth)
-    // return yyy-mm-dd
-
     const orcamento = {
         ...foundOrcamento,
-        id,
-        month,
-        university,
-        food,
-        telephone,
-        educabr,
-        creditcard,
-        any,
-        economy,
-        somaGastos: somaGastos,
-        created_at
-        //birth: date(foundOrcamento.birth).iso 
+        
     }
      
     return res.render("orcamentos/edit", {orcamento})
@@ -162,10 +161,45 @@ exports.put = function(req, res) {
     if (!foundOrcamento)   return res.send("Orcamento not found!")
     
     //espalhando dentro do objeto todos os dados que estão no data e todos os dados que estão no req.body (front-end)
+
+    let{
+        month,
+        university,
+        food,
+        telephone,
+        educabr,
+        creditcard,
+        any,
+        economy,
+    } = req.body //usei a variavel let pois ela pode mudar
+    
+    const salario = 1300
+    const valeAlimentacao = 700
+    const rendaExtra = 0
+
+    const rendaTotal = salario + valeAlimentacao + rendaExtra
+
+    const somaDespesas = parseFloat(university) + parseFloat(food) + parseFloat(telephone) + parseFloat(educabr) + parseFloat(creditcard) + parseFloat(any) + parseFloat(economy)
+
+    const saldo = rendaTotal - somaDespesas
+    
     const orcamento = {
         ...foundOrcamento,
         ...req.body,
-        birth: Date.parse(req.body.birth),
+        month,
+        university,
+        food,
+        telephone,
+        educabr,
+        creditcard,
+        any,
+        economy,
+        salario,
+        valeAlimentacao,
+        rendaExtra,
+        rendaTotal,
+        somaDespesas,
+        saldo,
         id: Number(req.body.id)
     }
 

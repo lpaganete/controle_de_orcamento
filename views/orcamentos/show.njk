@@ -4,13 +4,58 @@
 {% block content %}
 
     <div class="card">
-        <section class="avatar" 
-                 style="background: url({{ orcamento.avatar_url }}) no-repeat center center / cover">
-                 
+        <section class="details">
+
+                <h3>Resumo: {{orcamento.month}}</h3>
+
+                <div class="item">
+                    <div>Salário (R$)</div>
+                    <div>{{ orcamento.salario }}</div>
+                </div>
+
+                <div class="item">
+                    <div>Vale alimentação (R$)</div>
+                    <div>{{ orcamento.valeAlimentacao }}</div>
+                </div>
+
+                 <div class="item">
+                    <div>Renda Extra (R$)</div>
+                    <div>{{ orcamento.rendaExtra }}</div>
+                </div>
+
+                <div class="item">
+                    <div>Renda mensal total (R$)</div>
+                    <div>{{ orcamento.rendaTotal }}</div>
+                </div>
+
+                 <div class="item">
+                    <div>Despesa mensal total(R$)</div>
+                    <div>{{ orcamento.somaDespesas }}</div>
+                </div>
+
+                <div class="item">
+                    <div>Economia mensal total (R$)</div>
+                    <div>{{ orcamento.economy }}</div>
+                </div>
+
+                <div class="item">
+                    <div>Saldo restante (R$)</div>
+                    <div>{{ orcamento.saldo }}</div>
+                </div>
+
+                <div class="item">
+                    <div>Criado em</div>
+                    <div>{{ orcamento.created_at }}</div>
+                </div>
+
+                <h3 style="margin-top: 50px;">Gráfico com percentual da renda gasta</h3>
+
+
         </section>
 
         <section class="details">
-            <h3>Orçamento de: {{ orcamento.month }}</h3>
+
+            <h3>Despesas do mês de: {{ orcamento.month }}</h3>
 
             <div class="item">
                 <div>Universidade (R$)</div>
@@ -47,16 +92,7 @@
                 <div>{{ orcamento.economy }}</div>
             </div>
 
-            <div class="item">
-                <div>Criado em</div>
-                <div>{{ orcamento.created_at }}</div>
-            </div>
-
-            <div class="item">
-               <div>Total dos Gastos (R$)</div>
-                <div>{{ orcamento.somaGastos }}</div>
-            </div>
-            
+                               
 
             <a href="/orcamentos/{{ orcamento.id }}/edit" class="button">Editar</a>
 

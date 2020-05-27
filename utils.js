@@ -42,7 +42,10 @@ module.exports = {
 
     },
 
+
     somaGastos: function(somaGastos) {
-        somaGastos = parseInt(university) + parseInt(food) + parseInt(telephone) + parseInt(educabr) + parseInt(creditcard) + parseInt(any) + parseInt(economy)
+        return somaGastos = parseFloat(university) + parseFloat(food) + parseFloat(telephone) + parseFloat(educabr) + parseFloat(creditcard) + parseFloat(any) + parseFloat(economy)
     }
+
+
 }

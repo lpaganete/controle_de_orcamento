@@ -106,6 +106,7 @@ header {
 
  .details {
      padding: 32px;
+     border-left: 5px solid var(--cinza-teste); /*TESTANDO!!!*/
      
  }
 
